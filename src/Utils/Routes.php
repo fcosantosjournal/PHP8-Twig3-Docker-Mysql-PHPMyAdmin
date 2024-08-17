@@ -8,12 +8,14 @@ class Routes {
     public $route;
     public $path;
 
+    // Constructor method is called when a new object is created.
     public function __construct() {
       $this->routes = $this->getRoutes();
       $this->route = $this->getRoute();
       $this->path = $this->getPathRoute($this->route);
     }
 
+    // Routes array.
     public function getRoutes() {
       return [
         'home' => [
@@ -41,31 +43,29 @@ class Routes {
     }
 
     public function getRoute() {
-      $this->route = $_SERVER['REQUEST_URI'];
+      $this->route = $_SERVER['REQUEST_URI']; // Get the current route on browser.
       return $this->route;
     }
 
     public function getPathRoute($route) {
-      $routeSplit = explode('/', $route);
-      $controller = $routeSplit[1];
-      if (empty($controller)) {
-        $controller = 'home';
-      } else {
-        $controller = $this->clearRoute($controller);
-      }
-      $controller = $this->checkPathIfExist($controller);
-      return $controller;
+      $routeSplit = explode('/', $route); // Split the route by '/'.
+      $pathRoute = $routeSplit[1]; // Get the first element of the array after split.
+      if (empty($pathRoute)) {
+        return 'home'; // If the route is empty, return home.
+      } 
+      $pathRoute = $this->clearRoute($pathRoute); // Clear the route.
+      return $this->checkPathIfExist($pathRoute); // Check if the route exists.
     }
 
     public function clearRoute($route) {
-      return preg_replace('/[^a-zA-Z0-9]/', '', $route);
+      return preg_replace('/[^a-zA-Z0-9]/', '', $route); // Clear the route.
     }
 
     public function checkPathIfExist($route) {
+      // Check if the route exists in the routes array.
       if (array_key_exists($route, $this->routes)) {
-        return $this->routes[$route]['name'];
-      } else {
-        return $this->routes['404']['name'];
+        return $this->routes[$route]['name']; // Return the route name.
       }
+      return $this->routes['404']['name']; // If the route does not exist, return 404.
     }
 }
