@@ -9,7 +9,7 @@ class TwigUtils {
     protected Environment $twig;
    
     public function __construct() {
-        $this->twig = new Environment(new \Twig\Loader\FilesystemLoader(__DIR__ . '/../View/templates'), [
+        $this->twig = new Environment(new \Twig\Loader\FilesystemLoader(__DIR__ . '/../View/Templates'), [
             'debug' => true, 
             'cache' => false, 
         ]);
