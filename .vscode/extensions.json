@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+      "bajdzis.vscode-twig-pack",
+      "bmewburn.vscode-intelephense-client",
+      "ecmel.vscode-html-css",
+      "github.copilot",
+      "github.copilot-chat",
+      "mcright.auto-save",
+      "mohsen1.prettify-json",
+      "ms-azuretools.vscode-docker",
+      "ms-vscode-remote.remote-containers",
+      "ms-vscode-remote.remote-wsl",
+      "pdconsec.vscode-print",
+      "ritwickdey.liveserver",
+      "usernamehw.remove-empty-lines",
+      "vue.volar",
+      "whatwedo.twig",
+      "xdebug.php-debug"
+  ]
+}
