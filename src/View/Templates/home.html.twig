@@ -6,4 +6,13 @@
     <p>{{routes.controller}}</p>
     <p>{{data.title}}</p>
     <p>{{data.message}}</p>
+    <p>
+        {% for item in routes.routes %}
+            {% for key, route in item %}
+                {{ dump(key) }} - {{ dump(route) }}
+                <br>
+            {% endfor %}
+            <br>
+        {% endfor %}
+    </p>
 {% endblock %} 
