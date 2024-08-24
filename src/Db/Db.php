@@ -23,6 +23,12 @@ class Db {
       return $this->executeQuery($sql, [':id' => $id])->fetch();
   }
 
+  public function getOneBy(string $col, string $value, string $table): array
+  {
+      $sql = "SELECT * FROM $table WHERE $col = '$value'";
+      return $this->executeQuery($sql)->fetch();
+  }
+
   public function insert(string $fields, string $values, string $table): bool
   {
       $sql = "INSERT INTO $table ($fields) VALUES ($values)";

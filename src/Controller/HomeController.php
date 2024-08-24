@@ -2,18 +2,19 @@
 
 namespace App\Controller;
 
+use App\Db\Db;
+
 class HomeController {
   
   public $data;
+  protected $db;
 
   public function __construct() {
-    $this->data = [
-      'title' => 'Página Inicial',
-      'message' => 'Bem-vindo à página inicial do projeto.',
-    ];
+    $this->db = new Db();
   }
 
   public function index() {
+    $this->data = $this->db->getOneBy('path', 'home', 'paginas');
     return $this->data;
   }
 }

@@ -6,11 +6,13 @@
     <p>{{routes.template}}</p>
     <p>{{routes.controller}}</p>
     -->
-    <p>{{data.title}}</p>
-    <p>{{data.message}}</p>
     <p> 
         {% if routes.routes %}
             {% include 'menu.html.twig' with {'routes': routes.routes} %}
         {% endif %} 
     </p>
+    <p>{{data.title}}</p>
+    <p>{{data.description}}</p>
+    <p>{{data.content|raw}}</p>
+    
 {% endblock %} 
