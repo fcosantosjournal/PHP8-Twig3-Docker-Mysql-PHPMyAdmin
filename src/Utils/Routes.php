@@ -2,6 +2,8 @@
 
 namespace App\Utils;
 
+use App\Model\RoutesModel;
+
 class Routes {
 
   public $routes;
@@ -12,37 +14,11 @@ class Routes {
 
   // Constructor method is called when a new object is created.
   public function __construct() {
-    $this->routes = $this->getRoutes();
+    $this->routes = (new RoutesModel())->getRoutes(); // Get the routes from the RoutesModel.
     $this->route = $this->getRoute();
     $this->path = $this->getPathRoute($this->route);
     $this->template = $this->getTemplate($this->path);
     $this->controller = $this->getController($this->path);
-  }
-
-  // Routes array.
-  public function getRoutes() {
-    return [
-      'home' => [
-        'name' => 'home',
-        'template' => 'home.html.twig',
-        'controller' => 'App\Controller\HomeController',
-      ],
-      'about' => [
-        'name' => 'about',
-        'template' => 'about.html.twig',
-        'controller' => 'App\Controller\AboutController',
-      ],
-      'contact' => [
-        'name' => 'contact',
-        'template' => 'contact.html.twig',
-        'controller' => 'App\Controller\ContactController',
-      ],
-      '404' => [
-        'name' => '404',
-        'template' => '404.html.twig',
-        'controller' => 'App\Controller\ErrorController',
-      ],
-    ];
   }
 
   public function getTemplate($path) {

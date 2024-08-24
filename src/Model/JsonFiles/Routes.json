@@ -1,0 +1,17 @@
+{ 
+  "home": {
+    "name": "home",
+    "template": "home.html.twig",
+    "controller": "App\\Controller\\HomeController"
+  },
+  "about": {
+    "name": "about",
+    "template": "about.html.twig",
+    "controller": "App\\Controller\\AboutController"
+  },
+  "contact": {
+    "name": "contact",
+    "template": "contact.html.twig",
+    "controller": "App\\Controller\\ContactController"
+  }
+}
