@@ -13,7 +13,6 @@ class RoutesModel {
     $this->db = new Db();
   }
   
-  // Routes get from json file.
   public function getRoutes() {
     
     // Get all routes from the database.
@@ -30,4 +29,10 @@ class RoutesModel {
     
     return $this->routes;
   }
+
+  public function getRoutesFromJsonFile() {
+    $json = json_decode(file_get_contents(__DIR__ . '/../Model/JsonFiles/Routes.json'), true);
+    return $json;
+  }
+
 }
