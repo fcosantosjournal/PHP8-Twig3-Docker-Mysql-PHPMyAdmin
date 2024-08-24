@@ -1,0 +1,7 @@
+{% for item in routes %}
+  {% for key, route in item %}
+    {% if route != '404' and key != 'template' and key != 'controller' %}
+      <a href="{{ route }}">{{ route }}</a><br>
+    {% endif %}
+  {% endfor %}
+{% endfor %}
