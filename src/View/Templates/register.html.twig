@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %} 
+
+{% block content %}
+    <!--
+    <p>{{routes.path}}</p>
+    <p>{{routes.template}}</p>
+    <p>{{routes.controller}}</p>
+    -->
+    <p> 
+        {% if routes.routes %}
+            {% include 'menu.html.twig' with {'routes': routes.routes, 'logged': data.logged, 'path': data.path} %}
+        {% endif %} 
+    </p>
+    <p>{{data.title}}</p>
+    <p>{{data.description}}</p>
+
+    <form action="{{data.path}}" method="post">
+        <label for="name">Nome:</label><br>
+        <input type="text" id="name" name="name" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Cadastrar">
+    </form>
+    
+{% endblock %} 

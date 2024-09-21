@@ -4,11 +4,26 @@ namespace App\Db;
 
 class Db {
   protected \PDO $db;
+  protected $user = "root";
+  protected $password = "root_password";
+  protected $host = "mysql";
+  protected $dbname = "php8";
 
-  public function __construct(string $user = "root", string $password = "root_password", string $host = "localhost", string $dbname = "php8")
+  public function __construct()
+  {     
+      $dsn = "mysql:host=$this->host;dbname=$this->dbname";
+      try {
+        $this->db = new \PDO($dsn, $this->user, $this->password);
+      } catch (\PDOException $e) {
+        echo $e->getMessage();
+      }
+  }
+
+  private function executeQuery(string $sql, array $params = []): \PDOStatement
   {
-      $dsn = "mysql:host=$host;dbname=$dbname";
-      $this->db = new \PDO($dsn, $user, $password);
+      $query = $this->db->prepare($sql);
+      $query->execute($params);
+      return $query;
   }
 
   public function getAll(string $table): array
@@ -30,7 +45,7 @@ class Db {
   }
 
   public function insert(string $fields, string $values, string $table): bool
-  {
+  { 
       $sql = "INSERT INTO $table ($fields) VALUES ($values)";
       return $this->executeNonQuery($sql);
   }
@@ -57,13 +72,6 @@ class Db {
   {
       $sql = "SELECT $fields FROM $table WHERE $where";
       return $this->executeQuery($sql)->fetchAll();
-  }
-
-  private function executeQuery(string $sql, array $params = []): \PDOStatement
-  {
-      $query = $this->db->prepare($sql);
-      $query->execute($params);
-      return $query;
   }
 
   private function executeNonQuery(string $sql, array $params = []): bool

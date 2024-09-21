@@ -13,9 +13,15 @@
     </p>
     <p>{{data.title}}</p>
     <p>{{data.description}}</p>
-    <p>{{data.user}}</p>
-    <p>{{data.content|raw}}</p>
+    <p>{{data.msg}}</p>
 
-    
+    <form action="{{data.path}}" method="post">
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password" required><br>
+        <input type="submit" value="Entrar">
+    </form>
+
     
 {% endblock %} 
